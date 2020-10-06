@@ -1,48 +1,48 @@
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
         <!-- Search form -->
-        <div class="md-form active-cyan active-cyan-2 mb-3">
-            <input class="form-control" type="text" placeholder="Search" aria-label="Search">
-        </div>
+        <form>
+            <div class="md-form active-cyan active-cyan-2 mb-3">
+                <input name="eventname" (input)="findeventlist($event)" class="form-control searchbox" type="text" placeholder="Search Events" aria-label="Search">
+            </div>
+        </form>
+
     </div>
 
 </div>
-<div class="row">
-    <div class="col-md-3 mt-2">
-        <div class="card bg-light">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-md-4">
-                        <img alt="eventimage" class="mt-2 rounded-circle img-thumbnail " src="https://bootdey.com/img/Content/avatar/avatar7.png">
+<div *ngIf="eventlist === []; else elseBlock">
+    <div class="row">
+        <div class="col-md-12">
+            <h1> no result found</h1>
+        </div>
+    </div>
+</div>
+<ng-template #elseBlock>
+    <div class="row">
+        <div class="col-md-3 mt-2" *ngFor="let  eventlist of eventlist">
+            <div class="card bg-light">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img alt="eventimage" class="mt-2 rounded-circle img-thumbnail " src="https://bootdey.com/img/Content/avatar/avatar7.png">
 
-                    </div>
-                    <div class="col-md-8">
-                        <h1>Event 1</h1>
-                        <p class="card-text">06-oct-2020</p>
-                        <p class="card-text">Seats Available : <span style="padding: 7px ;font-size: 30px solid ;" class="badge badge-info badge-pill">23</span></p>
-                        <button type="button" class="btn btn-primary">Booknow</button>
+                        </div>
+                        <div class="col-md-8">
+                            <h2>{{eventlist.eventname}}</h2>
+                            <p class="card-text">{{eventlist.eventdate}}</p>
+                            <div *ngIf="eventlist.availableseats == 0; else soltout">
+                                <p class="card-text">Seats Available : <span style="padding: 7px ;font-size: 30px solid ;" class="badge badge-danger badge-pill">{{eventlist.availableseats}}</span></p>
+                                <label style="padding: 10px 20px ;font-size: 30px solid ;" class="badge badge-danger badge-pill text-white">Sold Out</label>
+                            </div>
+                            <ng-template #soltout>
+                                <p class="card-text">Seats Available : <span style="padding: 7px ;font-size: 30px solid ;" class="badge badge-info badge-pill">{{eventlist.availableseats}}</span></p>
+                                <button type="button" (click)="bookingevent(eventlist._id)" class="btn btn-primary">Booknow</button>
+                            </ng-template>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <div class="col-md-3 mt-2">
-        <div class="card bg-light">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-md-4">
-                        <img alt="eventimage" class="mt-2 rounded-circle img-thumbnail " src="https://bootdey.com/img/Content/avatar/avatar7.png">
-
-                    </div>
-                    <div class="col-md-8">
-                        <h1>Event 1</h1>
-                        <p class="card-text">06-oct-2020</p>
-                        <p class="card-text">Seats Available : <span style="padding: 7px ;font-size: 30px solid ;" class="badge badge-info badge-pill">0</span></p>
-                        <label style="padding: 10px 20px ;font-size: 30px solid ;" class="badge badge-danger badge-pill text-white">Sold Out</label>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+</ng-template>

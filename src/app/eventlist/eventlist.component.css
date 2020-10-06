@@ -3,6 +3,20 @@
     box-shadow: 0 10px 20px rgba(0, 0, 0, .12), 0 4px 8px rgba(0, 0, 0, .06);
 }
 
+.searchbox {
+    border: 0px;
+    width: 100%;
+    padding: 10px;
+    border-bottom: solid 1px;
+}
+
+.searchbox:active {
+    border: 0px;
+    width: 100%;
+    padding: 10px;
+    border-bottom: solid 1px palevioletred;
+}
+
 .card img {
     position: absolute;
     top: 20px;
