@@ -10,11 +10,17 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule,Routes } from '@angular/router';
 import { EventlistComponent } from './eventlist/eventlist.component';
+
+import { EventAddComponent } from './event-add/event-add.component';
+import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule, FormControl } from '@angular/forms';
+
 @NgModule({
   declarations: [
     AppComponent,
     UserComponent,
-    EventlistComponent
+    EventlistComponent,
+    EventAddComponent
   ],
   imports: [
     BrowserModule,
@@ -22,7 +28,13 @@ import { EventlistComponent } from './eventlist/eventlist.component';
     NgbModule,
     FormsModule,
     HttpClientModule,
-    RouterModule
+    RouterModule,
+
+    FormsModule,
+    CommonModule,
+ 
+    ReactiveFormsModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
