@@ -14,9 +14,9 @@
         <div class="card border-dark mb-3 ">
             <div class="card-header ">
                 <h1 class="text-center">{{eventname}}</h1>
-                <!-- <div class="alert alert-success" *ngIf="showalert==true" role="alert">
-                    This is a success alert—check it out!
-                </div> -->
+                <div class="alert alert-success" *ngIf="showalert==true" role="alert">
+                    Ticket Booked
+                </div>
                 <h3 class="text-center">Number Of Avaliable Seats <span style="padding: 5px;font-size: medium !important;" class="badge badge-info ">{{availableseats}}</span> </h3>
             </div>
             <div class="card-body">
@@ -70,8 +70,8 @@
                                 </div>
                             </div>
                             <div class="form-group text-center">
-                                <button type="submit" [disabled]="userForm.form.invalid" class="btn btn-success">Save</button> &nbsp;
-                                <button (click)="goback()" class="btn btn-danger">Cancel</button>
+                                <button type="submit" [disabled]="userForm.form.invalid || buttondisable==true" class="btn btn-success">Save</button> &nbsp;
+                                <button (click)="goback()" [disabled]="buttondisable==true" class="btn btn-danger">Cancel</button>
                             </div>
                         </form>
                     </div>

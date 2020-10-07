@@ -22,7 +22,8 @@ export class EventAddComponent implements OnInit {
   availableseats:string;
   eventimg:string;
   data:number[]=[1,2,3]
-  
+  showalert:boolean
+  buttondisable:boolean
   constructor(private route: ActivatedRoute,private router: Router) { 
     this.eventname = this.route.snapshot.paramMap.get('eventname');
     this.availableseats = this.route.snapshot.paramMap.get('availableseats');
@@ -53,6 +54,8 @@ submitForm() {
   this.MyForm.form.markAllAsTouched();
 }
 submit(formData){
+  this.showalert=true
+  this.buttondisable=true
 console.log(formData)
 }
 updateUser(formData){
