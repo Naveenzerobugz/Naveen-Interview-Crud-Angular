@@ -1,5 +1,6 @@
 import { Component, OnInit ,ViewChild } from '@angular/core';
 import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 export interface FormObject {
   name: string;
   email: string;
@@ -16,18 +17,17 @@ export class EventAddComponent implements OnInit {
   model: FormObject;
   validatingForm: FormGroup;
   @ViewChild('MyForm', { static: false }) MyForm: NgForm;
-  eventnumber:number=0;
-  avaseats:number=0;
-  imagepath:any='./assets/images/download.png';
   seats:number[]=[1,2,3,4,5,6]
+  eventname:string;
+  availableseats:string;
+  eventimg:string;
+  data:number[]=[1,2,3]
 
-  demo=[1,2,3,4]
-  // attendee:number[]=[1,2,3,4]
-
-  count='10';
   
-  array = [{id: 1}, {id: 2},{id: 3}]
-  constructor() { 
+  constructor(private route: ActivatedRoute) { 
+    this.eventname = this.route.snapshot.paramMap.get('eventname');
+    this.availableseats = this.route.snapshot.paramMap.get('availableseats');
+    this.eventimg = this.route.snapshot.paramMap.get('eventimg');
     this.model = ({} as FormObject);
   }
 
@@ -39,14 +39,11 @@ export class EventAddComponent implements OnInit {
 
     });
   }
-datavalue=[];
-  onChange(deviceValue) {
-    this.datavalue=[];
-    console.log(deviceValue);
-  //  alert(deviceValue)
-    for (let index = 0; index < deviceValue-1; index++) {
-     this.datavalue.push(index)
-      
+  attende=[];
+  onChange(seats) {
+    this.attende=[];
+    for (let index = 0; index < seats.target.value-1; index++) {
+     this.attende.push(index)      
     }
 }
 

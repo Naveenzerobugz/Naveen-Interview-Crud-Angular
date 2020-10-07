@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { EventService } from '../services/event.service';
 import { EventlistModule } from '../services/eventlist/eventlist.module';
 
@@ -9,7 +10,7 @@ import { EventlistModule } from '../services/eventlist/eventlist.module';
 })
 export class EventlistComponent implements OnInit {
 eventlist:[]
-  constructor(private eventlistservice:EventService) {
+  constructor(private eventlistservice:EventService,private router: Router) {
     this.eventlistservice.findevents("").subscribe((res)=>{
             if (res['status']=='success') {
               this.eventlist=res['eventlist'];       
@@ -27,7 +28,7 @@ eventlist:[]
       } 
     })
   }
-  bookingevent(id:string){
-    alert(id)
+  bookingevent(eventlist:[]){
+    this.router.navigate(['/eventadd',eventlist['eventname'],eventlist['availableseats'],eventlist['eventimg']]);
   }
 }

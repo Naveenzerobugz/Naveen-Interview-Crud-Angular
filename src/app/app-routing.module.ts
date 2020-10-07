@@ -4,8 +4,9 @@ import { EventAddComponent } from './event-add/event-add.component';
 import { EventlistComponent } from './eventlist/eventlist.component';
 
 const routes: Routes = [
-  { path: '', component: EventlistComponent },
-  {path:"eventadd",component:EventAddComponent,data:{title: 'Event Add'}},
+  { path: '', component: EventlistComponent ,data:{title: 'Events'}},
+  // {path:"eventadd/:eventname/:availableseats:/:eventimg",component:EventAddComponent,data:{title: 'Event Add'}},
+  {path:"eventadd/:eventname/:availableseats/:eventimg",component:EventAddComponent,data:{title: 'Event Add'}},
 ];
 
 @NgModule({

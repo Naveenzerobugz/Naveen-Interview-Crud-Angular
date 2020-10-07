@@ -25,7 +25,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-4">
-                            <img alt="eventimage" class="mt-2 rounded-circle img-thumbnail " src="https://bootdey.com/img/Content/avatar/avatar7.png">
+                            <img alt="eventimage" class="mt-2 rounded-circle img-thumbnail " src={{eventlist.eventimg}}>
 
                         </div>
                         <div class="col-md-8">
@@ -37,7 +37,7 @@
                             </div>
                             <ng-template #soltout>
                                 <p class="card-text">Seats Available : <span style="padding: 7px ;font-size: 30px solid ;" class="badge badge-info badge-pill">{{eventlist.availableseats}}</span></p>
-                                <button type="button" (click)="bookingevent(eventlist._id)" class="btn btn-primary">Booknow</button>
+                                <button type="button" (click)="bookingevent(eventlist)" class="btn btn-primary">Booknow</button>
                             </ng-template>
                         </div>
                     </div>
