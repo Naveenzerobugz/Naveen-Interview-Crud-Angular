@@ -22,7 +22,6 @@ export class EventAddComponent implements OnInit {
   availableseats:string;
   eventimg:string;
   data:number[]=[1,2,3]
-
   
   constructor(private route: ActivatedRoute,private router: Router) { 
     this.eventname = this.route.snapshot.paramMap.get('eventname');
@@ -53,16 +52,16 @@ submitForm() {
   console.log(this.MyForm.form.valid);
   this.MyForm.form.markAllAsTouched();
 }
-
+submit(formData){
+console.log(formData)
+}
 updateUser(formData){
   console.log("Form Value",formData.value); //here iam logged form value
 }
 get input() { return this.validatingForm.get('txtname'); }
 //txtemail
 get inputemail() { return this.validatingForm.get('txtemail'); }
-
 //inputmobile
-
 get inputmobile() { return this.validatingForm.get('txtmobile'); }
 omit_number(event) {
   var key;

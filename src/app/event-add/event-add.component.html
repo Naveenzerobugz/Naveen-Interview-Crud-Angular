@@ -22,7 +22,7 @@
                         <img [src]="eventimg" class="img-circle" alt="Cinque Terre">
                     </div>
                     <div class="col-sm-8 col-lg-8">
-                        <form [formGroup]="validatingForm">
+                        <form [formGroup]="validatingForm" #userForm="ngForm" (ngSubmit)="submit(userForm.value)">
                             <div class="form-group row md-form">
                                 <label for="txtname" class="text-right col-sm-4 col-form-label">Name :*</label>
                                 <div class="col-sm-8">
@@ -67,7 +67,7 @@
                                 </div>
                             </div>
                             <div class="form-group text-center">
-                                <button class="btn btn-success">Save</button> &nbsp;
+                                <button type="submit" [disabled]="userForm.form.invalid" class="btn btn-success">Save</button> &nbsp;
                                 <button (click)="goback()" class="btn btn-danger">Cancel</button>
                             </div>
                         </form>
