@@ -1,6 +1,6 @@
 import { Component, OnInit ,ViewChild } from '@angular/core';
 import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 export interface FormObject {
   name: string;
   email: string;
@@ -24,7 +24,7 @@ export class EventAddComponent implements OnInit {
   data:number[]=[1,2,3]
 
   
-  constructor(private route: ActivatedRoute) { 
+  constructor(private route: ActivatedRoute,private router: Router) { 
     this.eventname = this.route.snapshot.paramMap.get('eventname');
     this.availableseats = this.route.snapshot.paramMap.get('availableseats');
     this.eventimg = this.route.snapshot.paramMap.get('eventimg');
@@ -46,7 +46,9 @@ export class EventAddComponent implements OnInit {
      this.attende.push(index)      
     }
 }
-
+goback(){
+  this.router.navigate(['/']);
+}
 submitForm() {
   console.log(this.MyForm.form.valid);
   this.MyForm.form.markAllAsTouched();

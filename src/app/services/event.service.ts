@@ -7,7 +7,7 @@ import { EventlistModule } from './eventlist/eventlist.module';
 })
 export class EventService {
 eventlist:EventlistModule[]
-api:string='http://localhost:3030/'
+api:string='https://event-booking-application.herokuapp.com/'
   constructor(private HttpClient: HttpClient) { }
   findevents(eventname:string){
     var data={

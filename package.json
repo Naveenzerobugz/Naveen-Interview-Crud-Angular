@@ -2,13 +2,13 @@
     "name": "crud",
     "version": "0.0.0",
     "scripts": {
-        "start": "http-server dist/",
-        "lint": "tslint \"src/**/*.ts\"",
+        "ng": "ng",
+        "start": "node server.js",
+        "build": "ng build",
         "test": "ng test",
-        "pree2e": "webdriver-manager update",
-        "e2e": "protractor",
-        "preinstall": "npm install -g http-server",
-        "postinstall": "ng build --prod"
+        "lint": "ng lint",
+        "e2e": "ng e2e",
+        "postinstall": "ng build --aot -prod"
     },
     "private": true,
     "dependencies": {
@@ -28,6 +28,8 @@
         "@fortawesome/free-solid-svg-icons": "^5.13.0",
         "@ng-bootstrap/ng-bootstrap": "^7.0.0",
         "bootstrap": "^4.5.0",
+        "express": "^4.17.1",
+        "path": "^0.12.7",
         "rxjs": "~6.6.0",
         "tslib": "^2.0.0",
         "zone.js": "~0.10.2"
